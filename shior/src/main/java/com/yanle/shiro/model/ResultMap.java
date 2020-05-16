@@ -1,4 +1,4 @@
-package com.yanle.shior.model;
+package com.yanle.shiro.model;
 
 import org.springframework.stereotype.Component;
 
