@@ -5,12 +5,20 @@ import com.yanle.shiro.model.ResultMap;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
 
 @RestController
 public class LoginController {
+    private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
+
     private final ResultMap resultMap;
 
     @Autowired
@@ -37,11 +45,15 @@ public class LoginController {
         return resultMap.success().message("成功注销");
     }
 
-    public ResultMap login(String username, String password) {
+    @PostMapping("/login")
+    public ResultMap login(@RequestBody Map<String, String> map) {
+
+        logger.info("用户名： {}, 密码： {}", map.get("username"), map.get("password"));
+
         // 创建一个 subject
         Subject subject = SecurityUtils.getSubject();
         // 生成令牌
-        UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+        UsernamePasswordToken token = new UsernamePasswordToken(map.get("username"), map.get("password"));
         // 认证
         subject.login(token);
 
