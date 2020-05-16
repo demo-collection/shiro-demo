@@ -4,6 +4,8 @@ target/
 !**/src/main/**
 !**/src/test/**
 
+shior/log
+
 ### STS ###
 .apt_generated
 .classpath
