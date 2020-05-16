@@ -13,14 +13,6 @@ import org.springframework.stereotype.Component;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * Created with IntelliJ IDEA
- *
- * @Author yuanhaoyue swithaoy@gmail.com
- * @Description 自定义 Realm
- * @Date 2018-03-25
- * @Time 21:46
- */
 @Component
 public class CustomRealm extends AuthorizingRealm {
     @Autowired
