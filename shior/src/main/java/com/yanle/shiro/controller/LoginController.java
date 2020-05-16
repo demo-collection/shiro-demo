@@ -57,6 +57,14 @@ public class LoginController {
         // 认证
         subject.login(token);
 
+        // 根据权限返回指定数据
+        String role = userMapper.getRole(map.get("username"));
+        if (role.equals("user")) {
+            return resultMap.success().message("欢迎登陆");
+        } else if (role.equals("admin")){
+            return resultMap.success().message("欢迎来到管理员页面");
+        }
+
         // todo 根据权限返回数据
         return resultMap.fail().message("权限错误！");
     }

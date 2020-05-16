@@ -4,7 +4,7 @@ target/
 !**/src/main/**
 !**/src/test/**
 
-shior/log/
+log/
 
 ### STS ###
 .apt_generated
