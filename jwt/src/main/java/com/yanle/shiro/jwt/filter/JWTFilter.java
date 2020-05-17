@@ -30,6 +30,7 @@ public class JWTFilter extends BasicHttpAuthenticationFilter {
                 responseError(response, e.getMessage());
             }
         }
+        return true;
     }
 
     /**
@@ -60,4 +61,16 @@ public class JWTFilter extends BasicHttpAuthenticationFilter {
             logger.error(e.getMessage());
         }
     }
+
+    /**
+     * 判断用户是否想要等录入
+     * 检测 header 里面包含是否是 token 字段
+     */
+    protected boolean isLoginAttempt(ServletRequest request, ServletResponse response) {
+        HttpServletRequest req = (HttpServletRequest) request;
+        String token = req.getHeader("Token");
+        return token != null;
+    }
+
+
 }
