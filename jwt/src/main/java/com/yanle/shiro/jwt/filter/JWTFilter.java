@@ -7,7 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.client.HttpServerErrorException;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -16,6 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URLEncoder;
 
+/**
+ * preHandle->isAccessAllowed->isLoginAttempt->executeLogin
+ */
 public class JWTFilter extends BasicHttpAuthenticationFilter {
     private Logger logger = LoggerFactory.getLogger(JWTFilter.class);
 
